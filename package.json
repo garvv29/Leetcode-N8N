@@ -1,0 +1,25 @@
+{
+  "name": "leetcode-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/browser.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "groq-sdk": "^1.6.0",
+    "mongoose": "^9.10.4",
+    "ollama": "^0.6.4",
+    "playwright": "^1.63.0"
+  }
+}
