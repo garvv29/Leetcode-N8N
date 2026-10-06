@@ -27,7 +27,7 @@ import {
 import {
     generateSolution,
     debugSolution,
-} from "./ollama.js";
+} from "./llm.js";
 
 import {
     archiveSolution,
