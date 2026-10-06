@@ -12,7 +12,6 @@
 
 **Language:** cpp
 
-**Model:** openai/gpt-oss-120b
 
 ---
 
