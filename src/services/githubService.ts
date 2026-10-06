@@ -16,31 +16,33 @@ async function runGit(args: string[]): Promise<string> {
     return stdout.trim();
 }
 
-export async function gitAddAndCommit(
-    files: string[],
-    message: string,
+export async function commitArchive(
+    archivePath: string,
+    date: string,
+    title: string,
 ): Promise<void> {
-    console.log("\nPreparing Git commit...");
+    console.log("\nCommitting archive to Git...");
 
-    await runGit(["add", ...files]);
+    await runGit(["add", archivePath]);
 
     const status = await runGit(["status", "--short"]);
 
     if (!status) {
-        console.log("No Git changes to commit.");
+        console.log("No archive changes to commit.");
         return;
     }
 
-    console.log("Changes:");
     console.log(status);
+
+    const message = `chore: add LeetCode solution for ${date} - ${title}`;
 
     await runGit(["commit", "-m", message]);
 
     console.log(`Git commit created: ${message}`);
 }
 
-export async function gitPush(): Promise<void> {
-    console.log("\nPushing to GitHub...");
+export async function pushToGitHub(): Promise<void> {
+    console.log("\nPushing archive to GitHub...");
 
     await runGit(["push"]);
 

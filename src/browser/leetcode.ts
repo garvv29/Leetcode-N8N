@@ -107,13 +107,20 @@ export async function openProblem(
     await page
         .locator(".monaco-editor")
         .first()
-        .waitFor();
+        .waitFor({state:"visible",timeout:10000,});
 }
 
 export async function setEditorCode(
     page: Page,
     code: string
 ): Promise<void> {
+    console.log("Problem page URL:", page.url());
+    console.log("Problem page title:", await page.title());
+
+    console.log(
+        "Problem page body:",
+        (await page.locator("body").innerText()).slice(0, 1000),
+    );
     const editors = page.locator(".monaco-editor");
 
     if (await editors.count() === 0) {

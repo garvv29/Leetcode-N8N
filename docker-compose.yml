@@ -1,0 +1,28 @@
+services:
+  automation:
+    build: .
+    container_name: leetcode-automation
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - DOCKER=true
+    volumes:
+      - browser_profile:/home/pwuser/.cache/leetcode-profile
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:8
+    container_name: leetcode-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+  browser_profile:
